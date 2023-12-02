@@ -1,0 +1,34 @@
+@model ControleEstoque.Models.Product;
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Adicionar quantidade</h1>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+
+        <form asp-action="Edit" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label for="quantidade" class="control-label">quantidade a ser adicionada</label>
+                <input type="number" id="quantidade" name="quantidade" class="form-control">
+                <span asp-validation-for="Quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <p></p>
+                <input type="submit" value="Salvar" class="btn btn-primary" /> |
+                <a asp-action="Index">Voltar aos produtos</a>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

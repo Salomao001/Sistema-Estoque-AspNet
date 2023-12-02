@@ -1,0 +1,35 @@
+@model ControleEstoque.Models.Client
+
+@{
+    ViewData["title"] = "Create";
+}
+
+<h1>Cadastrar</h1>
+
+<h4>Cliente</h4>
+<hr />
+<form asp-controller="Clients" asp-action="Create" method="post" class="">
+    <div class="form-group">
+        <label asp-for="Name" class="control-label">Nome</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Cpf" class="control-label"></label>
+        <input asp-for="Cpf" class="form-control" />
+        <span asp-validation-for="Cpf" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <p></p>
+        <input type="submit" value="Cadastrar" class="btn btn-primary" /> |
+        <a asp-action="Index">Voltar aos Clientes</a>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

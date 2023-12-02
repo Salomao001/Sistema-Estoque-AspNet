@@ -1,0 +1,56 @@
+@model IEnumerable<ControleEstoque.Models.Client>;
+
+
+@{
+    ViewData["Title"] = "Cliente";
+}
+<link rel="stylesheet" href="~/css/createbtn.css" asp-append-version="true" />
+
+<h1>Clientes</h1>
+
+<form asp-controller="Clients" asp-action="Index" method="get">
+    <p>
+        <label for="nameSearchString">Nome: </label>
+        <input type="text" name="nameSearchString">
+
+        <label for="cpfSearchString">Cpf:</label>
+        <input type="text" name="cpfSearchString" id="">
+
+        <input type="submit" value="Filtrar">
+    </p>
+</form>
+
+<p>
+    <button class="btn btn-2 btn-sep icon-cart" onclick="Create()">Adicionar cliente</button>
+</p>
+
+<table class="table table-striped-columns">
+    <thead>
+        <tr>
+            <th>@Html.DisplayName("Nome")</th>
+            <th>@Html.DisplayNameFor(x => x.Cpf)</th>
+            <th>Operações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(x => item.Name)</td>
+                <td>@Html.DisplayFor(x => item.Cpf)</td>
+                <td>
+                    <a asp-controller="Clients" asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                    <a asp-controller="Clients" asp-action="Delete" asp-route-id="@item.Id">Deletar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script>
+        function Create() {
+            window.location.href = '/' + "clients/create";
+        }
+    </script>
+}

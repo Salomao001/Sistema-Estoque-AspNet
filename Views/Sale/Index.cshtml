@@ -1,0 +1,76 @@
+@model IEnumerable<ControleEstoque.Models.Sale>;
+
+@{
+    ViewData["title"] = "Vendas";
+}
+
+<h1>Vendas</h1>
+
+<form asp-controller="Sales" asp-action="Index" method="get">
+    <h5>Filtrar vendas por cliente:</h5>
+    <p>
+        <label for="nameSearchString">Nome: </label>
+        <input type="text" name="nameSearchString">
+
+        <label for="cpfSearchString">Cpf:</label>
+        <input type="text" name="cpfSearchString" id="">
+
+        <input type="submit" value="Filtrar">
+    </p>
+</form>
+
+<p>
+    <link rel="stylesheet" href="~/css/createbtn.css" asp-append-version="true">
+    <button class="btn btn-2 btn-sep icon-cart" onclick="Create()">Cadastrar venda</button>
+</p>
+
+<table class="table table-striped-columns">
+    <thead>
+        <tr>
+            <th>@Html.DisplayName("Cliente")</th>
+            <th>@Html.DisplayName("Valor")</th>
+            <th>@Html.DisplayName("Data de venda")</th>
+            <th>@Html.DisplayName("Produtos")</th>
+            <th>@Html.DisplayName("Quantidade")</th>
+            <th>@Html.DisplayName("Operações")</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(x => item.Cliente!.Name) |
+                    @Html.DisplayFor(x => item.Cliente!.Cpf)
+                </td>
+                <td>R$ @Html.DisplayFor(x => item.Value)</td>
+                <td>@Html.DisplayFor(x => item.SellDate)</td>
+                <td>|
+                    @foreach (var product in item.SaleProducts)
+                    {
+                        @Html.DisplayFor(x => product.title) <a>|</a>
+                    }
+                </td>
+                <td>
+                    @foreach (var product in item.SaleProducts)
+                    {
+                        string quantity = $"{product.title}: {product.Quantity} ";
+                        @Html.DisplayFor(x => quantity)
+                    }
+                </td>
+                <td>
+                    @* <a asp-action="edit" asp-route-id="@item.Id">Edit</a> | *@
+                    <a asp-action="delete" asp-route-id="@item.Id">Deletar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script>
+        function Create() {
+            window.location.href = '/' + "sales/create";
+        }
+    </script>
+}

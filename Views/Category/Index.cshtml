@@ -1,0 +1,23 @@
+@model IEnumerable<ControleEstoque.Models.Category>
+
+@{
+    ViewData["Title"] = "Categories";
+}
+
+<h1>Categories</h1>
+
+<table class="table table-striped-columns">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Title)</th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tbody>
+            <tr>
+                <td>@Html.DisplayFor(modelitem => item.Title)</td>
+            </tr>
+        </tbody>
+    }
+</table>

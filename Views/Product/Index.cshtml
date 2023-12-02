@@ -1,0 +1,80 @@
+@model IEnumerable<ControleEstoque.Models.Product>
+
+<head>
+    @{
+        ViewData["Title"] = "Products";
+    }
+    <link rel="stylesheet" href="~/css/createbtn.css" asp-append-version="true" />
+</head>
+
+<h1>Produtos</h1>
+
+<form asp-controller="Products" asp-action="Index" method="get">
+    <p>
+        <label for="categorySearch">Categoria:</label>
+        <select id="categorySearch" name="categorySearch" asp-items="ViewBag.Categories">
+            <option value="">All</option>
+        </select>
+
+        <label for="searchStock">Estoque</label>
+        <select id="searchStock" name="searchStock">
+            <option value="">All</option>
+            <option value="Em estoque">Em estoque</option>
+            <option value="Esgotado">Esgotado</option>
+        </select>
+
+        Título: <input type="text" name="searchString" id="searchString" class="cotrol-label">
+        <input type="submit" value="Filtrar" class="control-label">
+
+    </p>
+</form>
+
+<p>
+    <button class="btn btn-2 btn-sep icon-cart" onclick="Create()">Adicionar produto</button>
+</p>
+
+<table class="table table-striped-columns">
+    <thead>
+        <tr>
+            <th>@Html.DisplayName("Título")</th>
+            <th>@Html.DisplayName("Preço")</th>
+            <th>@Html.DisplayName("Quantiade")</th>
+            <th>@Html.DisplayName("Data de Validade")</th>
+            <th>Categoria</th>
+            <th>Operações</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+        <tbody>
+            <tr>
+                <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    R$ @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                        @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                        @Html.DisplayFor(modelItem => item.ExpirationDate)
+                </td>
+                <td>
+                        @Html.DisplayFor(modelItem => item.Category!.Title)
+                </td>
+                <td>
+                    <a asp-controller="products" asp-action="edit" asp-route-id="@item.Id">Adicionar quantidade</a> |
+                    <a asp-controller="products" asp-action="delete" asp-route-id="@item.Id">Remover</a>
+                </td>
+            </tr>
+        </tbody>
+        }
+    </thead>
+</table>
+
+<script>
+    function Create() {
+
+        window.location.href = '/' + "products/create";
+    }
+</script>

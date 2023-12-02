@@ -1,0 +1,41 @@
+@model ControleEstoque.Models.Client
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Deletar</h1>
+
+<h3>Tem certeza que deseja excluir este cliente?</h3>
+<div>
+    <h4>Cliente</h4>
+    <hr />
+
+    <dl class="row">
+        <dt>
+            @Html.DisplayName("Nome")
+        </dt>
+        <dd>
+            @Html.DisplayFor(x => x.Name)
+        </dd>
+        <dt>
+            @Html.DisplayName("Cpf")
+        </dt>
+        <dd>
+            @Html.DisplayFor(x => x.Cpf)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <div class="form-group">
+            <input type="submit" value="Deletar" class="btn btn-danger"> |
+            <a asp-action="Index">Voltar aos clientes</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

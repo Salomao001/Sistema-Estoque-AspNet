@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+    @{
+        ViewData["Title"] = "Home";
+    }
+
+</head>
+
+<h1 style="text-align: center">Sistema de estoque</h1>
+
+
+<div class="operations">
+
+    <div class="options">
+
+        <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+            <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+            <label class="btn btn-outline-primary" for="btncheck1">Produtos</label>
+
+            <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off">
+            <label class="btn btn-outline-primary" for="btncheck2">Clientes</label>
+
+            <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off">
+            <label class="btn btn-outline-primary" for="btncheck3">Vendas</label>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#btncheck1').click(function () {
+                var controller = $(this).find('a').data('controller');
+
+                window.location.href = '/' + "Products";
+            });
+        });
+
+        $(document).ready(function () {
+            $('#btncheck2').click(function () {
+                var controller = $(this).find('a').data('controller');
+
+                window.location.href = '/' + "Clients";
+            });
+        });
+
+        $(document).ready(function () {
+            $('#btncheck3').click(function () {
+                var controller = $(this).find('a').data('controller');
+
+                window.location.href = '/' + "Sales";
+            });
+        });
+    </script>
+}

@@ -1,0 +1,36 @@
+@model ControleEstoque.Models.Sale;
+
+@{
+    ViewData["title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h4>Sale</h4>
+
+<div class="row">
+    <h4>Produto</h4>
+    <hr />
+
+    <dl class="row">
+        <dt>
+            @Html.DisplayName("ID da venda")
+        </dt>
+        <dd>
+            @Html.DisplayFor(x => x.Id)
+        </dd>
+        <dt>
+            @Html.DisplayName("Cliente")
+        </dt>
+        <dd>
+            @Html.DisplayFor(x => x.Cliente!.Name)
+        </dd>
+    </dl>
+
+    <form asp-action="delete" method="post">
+        <div class="form-group">
+            <input type="submit" value="Deletar" class="btn btn-danger"> |
+            <a asp-action="Index">Voltar ao Vendas</a>
+        </div>
+    </form>
+</div>

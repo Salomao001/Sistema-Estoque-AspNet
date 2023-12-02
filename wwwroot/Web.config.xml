@@ -1,0 +1,8 @@
+<configuration>
+    <system.web>
+        <globalization
+            culture="pt-Br"
+            uiCulture="pt-Br"
+        />
+    </system.web>
+</configuration>
