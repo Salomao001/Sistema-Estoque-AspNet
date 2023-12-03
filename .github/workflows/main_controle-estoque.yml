@@ -54,4 +54,4 @@ jobs:
           app-name: 'controle-estoque'
           slot-name: 'Production'
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_DD88048B5FEF4D78811E1F94F8E0060F }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_BF65A30E78E5497DAC93DA598507573D }}
