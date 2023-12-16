@@ -779,3 +779,9 @@ a[data-toggle="collapse"] {
   background: #494ca2 !important;
   border-color: #494ca2 !important;
 }
+
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 50px;
+  }
+}

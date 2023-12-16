@@ -95,7 +95,7 @@ namespace ControleEstoque.Controllers
             var products = await _context.Products.Include(x => x.Category).AsNoTracking().ToListAsync();
             if (!string.IsNullOrEmpty(searchString))
             {
-                products = products.Where(x => x.Title!.ToUpper().StartsWith(searchString.ToUpper())).ToList();
+                products = products.Where(x => x.Title!.ToUpper().Contains(searchString.ToUpper())).ToList();
             }
             if (!string.IsNullOrEmpty(searchStock))
             {

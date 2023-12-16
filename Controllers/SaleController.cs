@@ -90,11 +90,11 @@ namespace ControleEstoque.Controllers
 
             if (!string.IsNullOrEmpty(nameSearchString))
             {
-                sales = sales.Where(x => x.Cliente!.Name!.ToUpper().StartsWith(nameSearchString.ToUpper())).ToList();
+                sales = sales.Where(x => x.Cliente!.Name!.ToUpper().Contains(nameSearchString.ToUpper())).ToList();
             }
 
             if (!string.IsNullOrEmpty(cpfSearchString))
-                sales = sales.Where(x => x.Cliente!.Cpf!.StartsWith(cpfSearchString)).ToList();
+                sales = sales.Where(x => x.Cliente!.Cpf!.Contains(cpfSearchString)).ToList();
 
             return View(sales);
         }

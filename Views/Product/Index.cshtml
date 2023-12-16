@@ -38,37 +38,38 @@
         <tr>
             <th>@Html.DisplayName("Título")</th>
             <th>@Html.DisplayName("Preço")</th>
-            <th>@Html.DisplayName("Quantiade")</th>
+            <th>@Html.DisplayName("Quantidade")</th>
             <th>@Html.DisplayName("Data de Validade")</th>
             <th>Categoria</th>
             <th>Operações</th>
         </tr>
+    </thead>
+    <tbody>
         @foreach (var item in Model)
         {
-        <tbody>
             <tr>
                 <td>
-                        @Html.DisplayFor(modelItem => item.Title)
+                    @Html.DisplayFor(modelItem => item.Title)
                 </td>
                 <td>
                     R$ @Html.DisplayFor(modelItem => item.Price)
                 </td>
                 <td>
-                        @Html.DisplayFor(modelItem => item.Quantity)
+                    @Html.DisplayFor(modelItem => item.Quantity)
                 </td>
                 <td>
-                        @Html.DisplayFor(modelItem => item.ExpirationDate)
+                    @Html.DisplayFor(modelItem => item.ExpirationDate)
                 </td>
                 <td>
-                        @Html.DisplayFor(modelItem => item.Category!.Title)
+                    @Html.DisplayFor(modelItem => item.Category!.Title)
                 </td>
                 <td>
                     <a asp-controller="products" asp-action="edit" asp-route-id="@item.Id">Adicionar quantidade</a> |
                     <a asp-controller="products" asp-action="delete" asp-route-id="@item.Id">Remover</a>
                 </td>
             </tr>
-        </tbody>
         }
+    </tbody>
     </thead>
 </table>
 

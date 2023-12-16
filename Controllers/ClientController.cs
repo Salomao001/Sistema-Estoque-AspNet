@@ -66,11 +66,11 @@ namespace ControleEstoque.Controllers
             var clients = await _context.Clients.AsNoTracking().Where(x => x.IsDeleted != true).ToListAsync();
 
             if (!string.IsNullOrEmpty(cpfSearchString))
-                clients = clients.Where(x => x.Cpf!.StartsWith(cpfSearchString)).ToList();
+                clients = clients.Where(x => x.Cpf!.Contains(cpfSearchString)).ToList();
 
             if (!string.IsNullOrEmpty(nameSearchString))
             {
-                clients = clients.Where(x => x.Name!.ToUpper().StartsWith(nameSearchString.ToUpper())).ToList();
+                clients = clients.Where(x => x.Name!.ToUpper().Contains(nameSearchString.ToUpper())).ToList();
             }
 
             return View(clients);
